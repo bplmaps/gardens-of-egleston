@@ -1,0 +1,1 @@
+export const currentMapState = $state({currentIndex: 0});
