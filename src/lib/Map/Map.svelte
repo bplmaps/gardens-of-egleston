@@ -46,7 +46,7 @@
 
     $effect(() => {
         const trail = trails[currentMapState.currentIndex];
-        fetch(`/public/${trail.path_geojson}`)
+        fetch(`/${trail.path_geojson}`)
             .then((response) => response.json())
             .then((geojson) => {
                 let p = Math.min(window.innerWidth, window.innerHeight) / 5;
