@@ -2,20 +2,20 @@
     import MapCard from "./MapCard.svelte";
     import CarouselButton from "../UI/CarouselButton.svelte";
 
-    import trails from "../../assets/trails.json";
+    import gardens from "../../assets/gardens.json";
 
     import { currentMapState } from "../state.svelte";
 
     function nextMap() {
         currentMapState.currentIndex =
             currentMapState.currentIndex === 0
-                ? trails.length - 1
+                ? gardens.length - 1
                 : currentMapState.currentIndex - 1;
     }
 
     function previousMap() {
         currentMapState.currentIndex =
-            currentMapState.currentIndex === trails.length - 1
+            currentMapState.currentIndex === gardens.length - 1
                 ? 0
                 : currentMapState.currentIndex + 1;
     }
@@ -27,7 +27,7 @@
             <CarouselButton direction="left" onclick={previousMap} />
         </div>
     <div class="flex-grow">
-        <MapCard trail={trails[currentMapState.currentIndex]} />
+        <MapCard garden={gardens[currentMapState.currentIndex]} />
     </div>
     <div class="ml-2">
             <CarouselButton direction="right" onclick={nextMap} />

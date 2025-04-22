@@ -17,15 +17,15 @@
         >
             <div>
                 <div>
-                    <TrailsOutline />
+                    <!-- <TrailsOutline /> -->
                     <div
-                        class="text-center text-3xl text-yellow-900 uppercase font-black tracking-widest"
+                        class="text-center text-4xl text-yellow-900 uppercase font-black tracking-widest"
                     >
-                        of Boston
+                        Gardens of Egleston
                     </div>
                 </div>
                 <div class="mt-3 text-center sm:mt-5">
-                    <p>Boston is a perfect city to explore by foot. Whether you want to pass through Revolutionary history, explore the terrain of the city, or discover the stories of Bostonians past and present, there are trails for you.</p>
+                    <p>Use this map to view the gardens in Boston's Egelston Square</p>
                 </div>
             </div>
             <div class="mt-5 sm:mt-6">
@@ -33,7 +33,7 @@
                     type="button"
                     onclick={toggleActive}
                     class="inline-flex w-full justify-center rounded-md bg-orange-200 ring-2 text-lg px-3 py-2 font-semibold text-slate-900 shadow-sm hover:bg-orange-400 focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-orange-600"
-                    >Discover trails</button
+                    >Discover gardens</button
                 >
             </div>
             <div class="mt-4">
