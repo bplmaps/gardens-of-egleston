@@ -35,13 +35,13 @@
 
   const getIcon = (feature) => {
     const name = feature.get("garden"); 
-    const color = gardenStyles[name];
+    const color = '#006400';
 
     return new Style({
       image: new CircleStyle({
         radius: 16,
         fill: new Fill({ color }),
-        stroke: new Stroke({ color: "#fff", width: 2 }),
+        stroke: new Stroke({ color: "#fff", width: 4 }),
       }),
     });
   };
