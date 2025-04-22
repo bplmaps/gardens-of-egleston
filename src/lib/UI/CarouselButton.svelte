@@ -1,5 +1,5 @@
 <script>
-  let { direction = 'right', onclick } = $props();
+  let { direction = 'left', onclick } = $props();
 </script>
 
 <button class="rounded-full p-2 bg-blue-200 border-2 border-blue-800 hover:bg-orange-400 transition-colors cursor-pointer" onclick={onclick}>
