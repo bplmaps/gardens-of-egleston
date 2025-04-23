@@ -12,7 +12,7 @@
                         ";stroke-dashoffset:" +
                         pathElement.getTotalLength() +
                         ";animation-delay:" +
-                        Math.random() * 3.5 +
+                        Math.random() * 6.5 +
                         "s",
                 );
             },

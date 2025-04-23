@@ -16,32 +16,39 @@
   import gardens from "../../assets/gardens.json";
   import { currentMapState } from "../state.svelte";
   import { fromLonLat } from "ol/proj";
+  import Text from "ol/style/Text.js";
+  import Icon from 'ol/style/Icon.js';
 
-//   const key = "xzHYzv10Mfc1eJ8Vbizl";
-//   const styleJson = `https://api.maptiler.com/maps/topo-v2/style.json?key=${key}`;
+  //   const key = "xzHYzv10Mfc1eJ8Vbizl";
+  //   const styleJson = `https://api.maptiler.com/maps/topo-v2/style.json?key=${key}`;
 
   let mapElement;
   let map;
 
-  const gardenStyles = {
-    "NUBIA's Dixwell Garden": "#21A19D",
-    "Friends of Egleston Square Library Food Forest and Gardens": "#37441D",
-    "Peace Garden": "#92B96E",
-    "Egleston Community Orchard": "#3A3847",
-    "NUBIA's Dimock Garden": "#B8882E",
-    "Robert G. Lawson Park": "#71B788",
-    "Mendell School Garden": "#C6DCC8",
-  };
-
-  const getIcon = (feature) => {
-    const name = feature.get("garden"); 
-    const color = '#006400';
-
+  const styles = (feature) => {
+    const color = "#E5E7EBF";
+    const iconName = feature.get('icon');
+    const iconPath = `src/assets/icons/${iconName}`;
+    console.log(iconPath)
     return new Style({
-      image: new CircleStyle({
-        radius: 16,
-        fill: new Fill({ color }),
-        stroke: new Stroke({ color: "#fff", width: 4 }),
+      image: new Icon({
+        src: iconPath,
+        anchor: [0.5, 1],
+        height: 50,
+        width: 50,
+        // color: color
+      }),
+      text: new Text({
+        text: feature.get("garden"),
+        font: "bold 14px system-ui, Avenir, Helvetica, Arial, sans-serif",
+        fill: new Fill({ color: "#000" }),
+        stroke: new Stroke({ color: "#fff", width: 6 }),
+        offsetY: 20,
+        offsetX: 0,
+        placement: "point",
+        backgroundFill: new Fill({ color: "#fff" }),
+        backgroundStroke: new Stroke({ color: "#E5E7EB", width: 4 }),
+        padding: [4, 8, 4, 8],
       }),
     });
   };
@@ -49,10 +56,10 @@
   let pathSource = new VectorSource();
   let pathLayer = new VectorLayer({
     source: pathSource,
-    style: getIcon,
+    style: styles,
   });
 
-//   let backgroundLayer = new LayerGroup();
+  //   let backgroundLayer = new LayerGroup();
   let foregroundLayer = new LayerGroup({ layers: [pathLayer] });
   const baseLayer = new TileLayer({
     source: new OSM(),
@@ -78,7 +85,7 @@
         view.fit(new Point(fromLonLat([garden["long"], garden["lat"]])), {
           padding: [p, p, p, p],
           duration: 500,
-          maxZoom: 18,
+          maxZoom: 19,
         });
       });
   });
@@ -90,16 +97,43 @@
       view: view,
     });
 
-    // apply(backgroundLayer, styleJson);
+    map.on("singleclick", function (evt) {
+      map.forEachFeatureAtPixel(evt.pixel, function (feature) {
+        const geometry = feature.getGeometry();
+        if (geometry) {
+          const size = map.getSize();
+          map.getView().fit(geometry, {
+            duration: 500,
+            padding: [50, 50, 50, 50],
+            maxZoom: 19,
+            size: size,
+          });
+        }
+      });
+    });
   });
 </script>
 
-<div class="w-screen h-screen absolute">
-  <div bind:this={mapElement} class="w-full h-full"></div>
-  <div class="absolute bottom-2 w-full">
-    <MapCardHolder />
+<div class="fixed inset-0 flex flex-col overflow-hidden">
+  <header class="bg-white shadow z-10 px-4 py-3 text-sm md:text-base">
+    <div class="max-w-screen-xl mx-auto">
+      <a href="https://leventhalmap.org" class="font-semibold text-blue-500 hover:underline">LMEC</a>
+      <span class="mx-2 text-gray-500">❯</span>
+      <a href="https://www.leventhalmap.org/projects/grants-in-aid/" class="text-gray-800 hover:underline">Grants in Aid</a>
+      <span class="mx-2 text-gray-500">❯</span>
+      <i class="text-yellow-900 font-bold">Gardens of Egleston</i>
+    </div>
+  </header>
+
+  <div class="flex-1 relative">
+    <div bind:this={mapElement} class="absolute inset-0 z-0"></div>
+
+    <div class="absolute bottom-6 w-full px-4 z-10">
+      <MapCardHolder />
+    </div>
   </div>
 </div>
+
 
 <style>
 </style>
