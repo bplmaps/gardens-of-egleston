@@ -28,7 +28,7 @@
   const styles = (feature) => {
     const color = "#E5E7EBF";
     const iconName = feature.get('icon');
-    const iconPath = `src/assets/icons/${iconName}`;
+    const iconPath = `icons/${iconName}`;
     console.log(iconPath)
     return new Style({
       image: new Icon({
