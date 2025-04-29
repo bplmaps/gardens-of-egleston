@@ -24,7 +24,7 @@
                     </div>
                 </div>
                 <div class="mt-3 text-center sm:mt-5">
-                    <p>Use this map to view the gardens in Boston's Egelston Square</p>
+                    <p>Use this map to view the gardens in Boston's Egleston Square</p>
                 </div>
             </div>
             <div class="mt-5 sm:mt-6">
