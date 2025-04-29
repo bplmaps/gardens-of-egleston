@@ -38,12 +38,13 @@
             </div>
             <div class="mt-4">
                 <p class="text-xs text-center font-semibold">
-                    A project of the <a class=" text-blue-900 hover:text-blue-600 transition-colors"
+                    A project of the <a class="text-blue-900 hover:text-blue-600 transition-colors"
                         href="https://leventhalmap.org"
                         target="_blank"
                         >Leventhal Map & Education Center at the Boston Public
                         Library</a
-                    >
+                    > for
+                    <a class="text-blue-900 hover:text-blue-600 transition-colors" href="https://gardensofegleston.org/" target="blank">Gardens of Egleston</a>
                 </p>
             </div>
         </div>

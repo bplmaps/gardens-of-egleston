@@ -1,4 +1,5 @@
 <script>
+  import RegularShape from "ol/style/RegularShape.js";
   import OSM from "ol/source/OSM";
   import TileLayer from "ol/layer/Tile";
   import { onMount } from "svelte";
@@ -17,7 +18,7 @@
   import { currentMapState } from "../state.svelte";
   import { fromLonLat } from "ol/proj";
   import Text from "ol/style/Text.js";
-  import Icon from 'ol/style/Icon.js';
+  import Icon from "ol/style/Icon.js";
 
   //   const key = "xzHYzv10Mfc1eJ8Vbizl";
   //   const styleJson = `https://api.maptiler.com/maps/topo-v2/style.json?key=${key}`;
@@ -25,38 +26,86 @@
   let mapElement;
   let map;
 
-  const styles = (feature) => {
+  const normalStyle = (feature) => {
     const color = "#E5E7EBF";
-    const iconName = feature.get('icon');
+    const iconName = feature.get("icon");
     const iconPath = `icons/${iconName}`;
-    console.log(iconPath)
-    return new Style({
-      image: new Icon({
-        src: iconPath,
-        anchor: [0.5, 1],
-        height: 50,
-        width: 50,
-        // color: color
+    const yOffsetFraction = 0.6; // 0.5 = center, 0.6 = slightly up
+
+    return [
+      new Style({
+        image: new RegularShape({
+          points: 4,
+          radius: 40,
+          angle: Math.PI / 4,
+          fill: new Fill({ color: "#ffffff" }),
+          displacement: [0, 25],
+        }),
       }),
-      text: new Text({
-        text: feature.get("garden"),
-        font: "bold 14px system-ui, Avenir, Helvetica, Arial, sans-serif",
-        fill: new Fill({ color: "#000" }),
-        stroke: new Stroke({ color: "#fff", width: 6 }),
-        offsetY: 20,
-        offsetX: 0,
-        placement: "point",
-        backgroundFill: new Fill({ color: "#fff" }),
-        backgroundStroke: new Stroke({ color: "#E5E7EB", width: 4 }),
-        padding: [4, 8, 4, 8],
+      new Style({
+        image: new Icon({
+          src: iconPath,
+          anchor: [0.5, 1],
+          height: 50,
+          width: 50,
+        }),
+        text: new Text({
+          text: feature.get("garden"),
+          font: "bold 14px system-ui, Avenir, Helvetica, Arial, sans-serif",
+          fill: new Fill({ color: "#000" }),
+          stroke: new Stroke({ color: "#fff", width: 6 }),
+          offsetY: 30,
+          offsetX: 0,
+          placement: "point",
+          backgroundFill: new Fill({ color: "#fff" }),
+          backgroundStroke: new Stroke({ color: "#E5E7EB", width: 4 }),
+          padding: [4, 8, 4, 8],
+        }),
       }),
-    });
+    ];
+  };
+
+  const hoverStyle = (feature) => {
+    const color = "#E5E7EBF";
+    const iconName = feature.get("icon");
+    const iconPath = `icons/${iconName}`;
+    return [
+      new Style({
+        image: new RegularShape({
+          points: 4,
+          radius: 40,
+          angle: Math.PI / 4,
+          fill: new Fill({ color: "#ffffff" }),
+          displacement: [0, 25],
+        }),
+      }),
+      new Style({
+        image: new Icon({
+          src: iconPath,
+          anchor: [0.5, 1],
+          height: 50,
+          width: 50,
+        }),
+        text: new Text({
+          text: feature.get("garden"),
+          font: "bold 14px system-ui, Avenir, Helvetica, Arial, sans-serif",
+          fill: new Fill({ color: "#000" }),
+          stroke: new Stroke({ color: "#F3F4F6", width: 6 }),
+          offsetY: 30,
+          offsetX: 0,
+          placement: "point",
+          backgroundFill: new Fill({ color: "#F3F4F6" }),
+          backgroundStroke: new Stroke({ color: "#E5E7EB", width: 4 }),
+          padding: [4, 8, 4, 8],
+        }),
+      }),
+    ];
   };
 
   let pathSource = new VectorSource();
   let pathLayer = new VectorLayer({
     source: pathSource,
-    style: styles,
+    style: normalStyle,
   });
 
   //   let backgroundLayer = new LayerGroup();
@@ -100,6 +149,7 @@
     map.on("singleclick", function (evt) {
       map.forEachFeatureAtPixel(evt.pixel, function (feature) {
         const geometry = feature.getGeometry();
+
         if (geometry) {
           const size = map.getSize();
           map.getView().fit(geometry, {
@@ -109,6 +159,32 @@
             size: size,
           });
         }
+
+        const clickedName = feature.get("garden");
+        console.log(clickedName);
+        const index = gardens.findIndex(
+          (garden) => garden.garden === clickedName
+        );
+
+        if (index !== -1) {
+          currentMapState.currentIndex = index;
+        }
+      });
+    });
+
+    let hoveredFeature = null;
+
+    map.on("pointermove", function (evt) {
+      const pixel = map.getEventPixel(evt.originalEvent);
+      const hit = map.hasFeatureAtPixel(pixel);
+      map.getTargetElement().style.cursor = hit ? "pointer" : "";
+      if (hoveredFeature) {
+        hoveredFeature.setStyle(normalStyle(hoveredFeature));
+        hoveredFeature = null;
+      }
+      map.forEachFeatureAtPixel(evt.pixel, function (feature) {
+        hoveredFeature = feature;
+        feature.setStyle(hoverStyle(feature));
       });
     });
   });
@@ -117,23 +193,36 @@
 <div class="fixed inset-0 flex flex-col overflow-hidden">
   <header class="bg-white shadow z-10 px-4 py-3 text-sm md:text-base">
     <div class="max-w-screen-xl mx-auto">
-      <a href="https://leventhalmap.org" class="font-semibold text-blue-500 hover:underline">LMEC</a>
+      <a
+        href="https://leventhalmap.org"
+        class="font-semibold text-blue-500 hover:underline">LMEC</a
+      >
       <span class="mx-2 text-gray-500">❯</span>
-      <a href="https://www.leventhalmap.org/projects/grants-in-aid/" class="text-gray-800 hover:underline">Grants in Aid</a>
+      <a
+        href="https://www.leventhalmap.org/projects/grants-in-aid/"
+        class="text-gray-800 hover:underline">Grants in Aid</a
+      >
       <span class="mx-2 text-gray-500">❯</span>
       <i class="text-yellow-900 font-bold">Gardens of Egleston</i>
     </div>
   </header>
 
   <div class="flex-1 relative">
-    <div bind:this={mapElement} class="absolute inset-0 z-0"></div>
-
-    <div class="absolute bottom-6 w-full px-4 z-10">
-      <MapCardHolder />
+    <div bind:this={mapElement} class="absolute inset-0 z-0">
+      <div
+        id="popup"
+        class="absolute bg-white rounded-lg shadow-lg p-2 text-sm hidden"
+      ></div>
+    </div>
+    <div
+      class="absolute bottom-6 w-full flex justify-center z-10 pointer-events-none"
+    >
+      <div class="pointer-events-auto">
+        <MapCardHolder />
+      </div>
     </div>
   </div>
 </div>
-
 
 <style>
 </style>

@@ -23,7 +23,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "garden": "Friends of Egleston Square Library Food Forest and Gardens" , "icon": "sunflower.png" },
+      "properties": { "garden": "Friends of Egleston Square Library\nFood Forest and Gardens" , "icon": "sunflower.png" },
       "geometry": { "type": "Point", "coordinates": [-71.095555, 42.314229] }
     },
     {
@@ -53,7 +53,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "garden": "Golden Staircase/Park Lane" , "icon": "stairs.svg" },
+      "properties": { "garden": "Golden Staircase/Park Lane" , "icon": "stairs.png" },
       "geometry": { "type": "Point", "coordinates": [-71.099866, 42.311161] }
     },
     {
