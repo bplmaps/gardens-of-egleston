@@ -45,11 +45,19 @@
                 </svg>
             </a>
         </div>
-        <hr class="h-px my-2 bg-gray-200 border-0 dark:bg-gray-700">
+        <hr class="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700">
     </div>
-    <div class="items-start flex flex-col-reverse sm:flex-row justify-center gap-4 p-6">
+    <div class="items-start flex flex-col-reverse sm:flex-row justify-center gap-4 px-4">
         <p class="lg:w-1/2 align-text-top">{garden.description}</p><br>
-        <img class="rounded-md aspect-auto" width=200 src="https://gardensofegleston.org/wp-content/uploads/2025/02/2024-08-07-19.56.14.jpg?w=1024">
+        <div class="flex flex-col">
+            <img class="rounded-md" alt={garden.alt} width=200 src="https://gardensofegleston.org/wp-content/uploads/2025/02/2024-08-07-19.56.14.jpg?w=1024">
+            <p class="italic text-xs mt-2 text-gray-500">
+                Photo caption with a
+                <a href="..." class='text-blue-900 underline hover:text-blue-600 transition-colors'>
+                    link to a source
+                </a>
+            </p>
+        </div>
     </div>
 </div>
 

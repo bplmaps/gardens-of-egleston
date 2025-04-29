@@ -17,7 +17,6 @@
         >
             <div>
                 <div>
-                    <!-- <TrailsOutline /> -->
                     <div
                         class="text-center text-4xl text-yellow-900 uppercase font-black tracking-widest"
                     >
