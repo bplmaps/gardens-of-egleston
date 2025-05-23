@@ -148,7 +148,6 @@
 
     map.on("singleclick", function (evt) {
       map.forEachFeatureAtPixel(evt.pixel, function (feature) {
-
         const geometry = feature.getGeometry();
 
         if (geometry) {
@@ -163,12 +162,10 @@
 
         const clicked = feature.get("garden");
 
-        const index = gardens.findIndex(
-          (garden) => garden.garden === clicked
-        );
+        const index = gardens.findIndex((garden) => garden.garden === clicked);
 
         console.log(`clickedname: ${clicked}`);
-        console.log(`index: ${index}`)
+        console.log(`index: ${index}`);
 
         if (index !== -1) {
           currentMapState.currentIndex = index;
@@ -182,15 +179,19 @@
       const pixel = map.getEventPixel(evt.originalEvent);
       const hit = map.hasFeatureAtPixel(pixel);
       map.getTargetElement().style.cursor = hit ? "pointer" : "";
+
       if (hoveredFeature) {
         hoveredFeature.setStyle(normalStyle(hoveredFeature));
         hoveredFeature = null;
       }
+
       map.forEachFeatureAtPixel(evt.pixel, function (feature) {
         hoveredFeature = feature;
         feature.setStyle(hoverStyle(feature));
+        return true;
       });
     });
+
   });
 </script>
 

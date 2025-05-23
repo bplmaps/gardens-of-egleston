@@ -42,7 +42,7 @@
                         target="_blank"
                         >Leventhal Map & Education Center at the Boston Public
                         Library</a
-                    > for
+                    >, for
                     <a class="text-blue-900 hover:text-blue-600 transition-colors" href="https://gardensofegleston.org/" target="blank">Gardens of Egleston</a>
                 </p>
             </div>
