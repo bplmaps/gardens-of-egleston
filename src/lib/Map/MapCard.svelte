@@ -14,7 +14,7 @@
 </script>
 
 <div
-  class="bg-gray-100 rounded-lg border-4 border-gray-200 shadow-lg h-full max-h-[30vh] overflow-y-scroll"
+  class="bg-gray-100 rounded-lg border-4 border-gray-200 shadow-lg max-h-[30vh] overflow-y-scroll"
   on:scroll={handleScroll}
 >
     {#if scrolled}
@@ -23,7 +23,7 @@
         in:slide={{ y: -10 }}
     >
         <div class="flex flex-row items-center justify-center gap-2">
-            <h2 class="text-sm font-semibold">{garden.garden}</h2>
+            <h2 class="hidden md:block text-sm font-semibold w-sm">{garden.garden}</h2>
             <i class="bg-gray-200 rounded-lg text-xs mr-2 p-2 max-h-8 w-10">{currentMapState.currentIndex+1}/{gardens.length}</i>
         </div>
         <div class="justify-center flex flex-row md:flex-row sm:flex-row gap-2">
