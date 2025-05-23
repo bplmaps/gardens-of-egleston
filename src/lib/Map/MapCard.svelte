@@ -2,6 +2,7 @@
     import { currentMapState } from "../state.svelte";
     import gardens from "../../assets/gardens.json";
     import { fade, slide } from 'svelte/transition';
+    import CarouselButton from "../UI/CarouselButton.svelte";
 
     let { garden } = $props();
 
@@ -10,6 +11,20 @@
     function handleScroll(event) {
         scrolled = event.target.scrollTop > 0;
     }
+    function next() {
+        currentMapState.currentIndex =
+            currentMapState.currentIndex === 0
+            ? gardens.length - 1
+            : currentMapState.currentIndex - 1;
+    }
+
+    function previous() {
+        currentMapState.currentIndex =
+        currentMapState.currentIndex === gardens.length - 1
+            ? 0
+            : currentMapState.currentIndex + 1;
+    }
+  
 
 </script>
 
@@ -23,16 +38,25 @@
         in:slide={{ y: -10 }}
     >
         <div class="flex flex-row items-center justify-center gap-2">
-            <h2 class="hidden md:block text-sm font-semibold w-sm">{garden.garden}</h2>
+            <h2 class="hidden md:contents text-sm font-semibold w-sm">{garden.garden}</h2>
+            <div class="mx-auto flex items-end justify-center">
+                <div class="mr-2 mb-2 pointer-events-auto">
+                  <CarouselButton direction="left" onclick={next} />
+                </div>
+                <div class="ml-2 mb-2 pointer-events-auto">
+                  <CarouselButton direction="right" onclick={previous} />
+                </div>
+              </div>
         </div>
-        <div class="justify-center flex flex-row md:flex-row sm:flex-row gap-2">
-            <i class="bg-gray-200 rounded-lg text-xs mr-2 p-2 max-h-8 w-10">{currentMapState.currentIndex+1}/{gardens.length}</i>
-            <a href={garden.socials} target="_blank" class="w-8 hover:bg-blue-700 text-xs bg-blue-500 text-white px-2 py-1 rounded-md font-semibold flex gap-1">
+        
+        <div class="justify-center flex flex-row gap-2">
+            <i class="hidden md:contents bg-gray-200 rounded-lg text-xs mr-2 p-2 max-h-8 w-10">{currentMapState.currentIndex+1}/{gardens.length}</i>
+            <a href={garden.socials} target="_blank" class="hidden w-8 hover:bg-blue-700 text-xs bg-blue-500 text-white px-2 py-1 rounded-md font-semibold flex gap-1">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>
             </a>
-            <a href={garden.contact} target="_blank" class="w-8 hover:bg-pink-700 text-xs bg-pink-500 text-white px-2 py-1 rounded-md font-semibold flex gap-1">
+            <a href={garden.contact} target="_blank" class="hidden w-8 hover:bg-pink-700 text-xs bg-pink-500 text-white px-2 py-1 rounded-md font-semibold flex gap-1">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>
@@ -57,19 +81,26 @@
     {:else}
     <div class="text-center" out:slide={{ y: -10 }}>
         <h1 class="justify-center text-lg md:text-2xl lg:text-2xl font-bold my-2">{garden.garden}</h1>
+        
         <div class="justify-center flex flex-row md:flex-row sm:flex-row my-4 gap-2">
-            <a href={garden.socials} target="_blank" class="w-8 lg:w-28 hover:bg-blue-700 text-xs bg-blue-500 text-white px-2 py-1 rounded-md font-semibold flex gap-1">
-                <p class="hidden md:block">Learn More</p>
+            <div class="mr-2 mb-2 pointer-events-auto">
+                <CarouselButton direction="left" onclick={next} />
+              </div>
+            <a href={garden.socials} target="_blank" class="w-8 max-h-8 lg:w-28 hover:bg-blue-700 text-xs bg-blue-500 text-white px-2 py-1 rounded-md font-semibold flex gap-1">
+                <p class="hidden lg:block">Learn More</p>
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>
             </a>
-            <a href={garden.contact} target="_blank" class="w-8 lg:w-24 hover:bg-pink-700 text-xs bg-pink-500 text-white px-2 py-1 rounded-md font-semibold flex gap-1">
+            <a href={garden.contact} target="_blank" class="w-8 max-h-8 lg:w-24 hover:bg-pink-700 text-xs bg-pink-500 text-white px-2 py-1 rounded-md font-semibold flex gap-1">
                 <p class="hidden lg:block">Contact</p>
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>
             </a>
+            <div class="ml-2 mb-2 pointer-events-auto">
+                <CarouselButton direction="right" onclick={previous} />
+              </div>
         </div>
         <div class="justify-center flex flex-row md:flex-row sm:flex-row my-4 gap-2">
             <i class="bg-gray-200 rounded-lg text-xs mr-2 p-2 max-h-8 w-10 md:w-10 lg:w-10">{currentMapState.currentIndex+1}/{gardens.length}</i>
@@ -103,8 +134,8 @@
                 src="https://gardensofegleston.org/wp-content/uploads/2025/02/2024-08-07-19.56.14.jpg?w=1024"
             />
             <p>{garden.description}</p>
-            <p class="italic flex flex-row items-center justify-left gap-2 text-sm text-gray-500 mt-4">
-                Photo caption with a<a href="..." class="text-blue-900 underline hover:text-blue-600 transition-colors">link to a source</a>
+            <p class="italic items-center justify-left gap-2 text-sm text-gray-500 mt-4">
+                Photo caption with a <a href="..." class="text-blue-900 underline hover:text-blue-600 transition-colors">link to a source</a>
             </p>
         </div>
       </div>      
