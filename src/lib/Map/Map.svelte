@@ -148,6 +148,7 @@
 
     map.on("singleclick", function (evt) {
       map.forEachFeatureAtPixel(evt.pixel, function (feature) {
+
         const geometry = feature.getGeometry();
 
         if (geometry) {
@@ -160,11 +161,14 @@
           });
         }
 
-        const clickedName = feature.get("garden");
-        console.log(clickedName);
+        const clicked = feature.get("garden");
+
         const index = gardens.findIndex(
-          (garden) => garden.garden === clickedName
+          (garden) => garden.garden === clicked
         );
+
+        console.log(`clickedname: ${clicked}`);
+        console.log(`index: ${index}`)
 
         if (index !== -1) {
           currentMapState.currentIndex = index;

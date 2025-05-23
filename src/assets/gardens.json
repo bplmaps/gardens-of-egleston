@@ -9,7 +9,8 @@
       "contact": "eglestonpeacegarden@gmail.com",
       "socials": "https://www.facebook.com/groups/205069536653616",
       "unlocked": "Yes",
-      "icon": "icons/dove.png"
+      "icon": "icons/dove.png",
+      "images": "https://drive.google.com/drive/folders/18ADGVdm5WYYzARe2mwYy02hkJzg0kwWr"
     },
     {
       "garden": "NUBIA's Dixwell Garden",
@@ -21,7 +22,8 @@
       "contact": "Sayed Mohamed-Nour or Beth Beagan at bbeagan20@gmail.com",
       "socials": "https://www.nubianet.net/seed-yield/our-gardens/",
       "unlocked": "No",
-      "icon": "icons/ankh.png"
+      "icon": "icons/ankh.png",
+      "images": "https://drive.google.com/drive/folders/1zxoBiz9UtuSh11jYON3sCbjNWlpS99vc"
     },
     {
       "garden": "NUBIA's Dimock Garden",
@@ -33,10 +35,11 @@
       "contact": "",
       "socials": "www.nubianet.net",
       "unlocked": "No",
-      "icon": "icons/ankh.png"
+      "icon": "icons/ankh.png",
+      "images": "https://drive.google.com/drive/folders/1zxoBiz9UtuSh11jYON3sCbjNWlpS99vc"
     },
     {
-      "garden": "Friends of Egleston Square Library Food Forest and Gardens",
+      "garden": "Friends of Egleston Square Library\nFood Forest and Gardens",
       "highlight": "Edible path, library with gardening books, outdoor seating, raised beds for community use",
       "description": "Since 2014, the Friends of the Egleston Square Branch Library have been building an inclusive resilent community through the library landscape. Until the library is demolished and rebuilt in the coming years, you can visit a food forest with mature fruit trees and shrubs, raised beds for flowers and vegetables, an insectiary meadow, and seating areas surrounded by annual and perennial herbs and flowers. The Friends and the Library host annual seed and seedling distributions and many other urban growing events. In addition to the diverse permaculture landscape, you will also find a beautiful seed exchange cabinet with a planted green roof by local artist Carolyn Lewenberg.",
       "lat": 42.314229,
@@ -57,7 +60,8 @@
       "contact": "granadagarden20@gmail.com",
       "socials": "",
       "unlocked": "No",
-      "icon": "icons/currant.jpg"
+      "icon": "icons/currant.jpg",
+      "images": "https://drive.google.com/drive/folders/1dfRsCNzlq3AaeeSQzIkIg4_dHVurev_7"
     },
     {
       "garden": "Egleston Community Orchard",
@@ -69,7 +73,8 @@
       "contact": "",
       "socials": "https://www.bostonfoodforest.org/egleston-page",
       "unlocked": "Yes",
-      "icon": "icons/apple.svg"
+      "icon": "icons/apple.svg",
+      "images": "https://drive.google.com/drive/folders/1rwdiKwilM_o5fiwgVEjgxup1suwsVsm6"
     },
     {
       "garden": "Hernandez School Rain Garden",
