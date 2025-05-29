@@ -10,10 +10,9 @@
   import VectorLayer from "ol/layer/Vector";
   import VectorSource from "ol/source/Vector";
   import GeoJSON from "ol/format/GeoJSON";
-  import { apply } from "ol-mapbox-style";
   import "ol/ol.css";
   import MapCardHolder from "./MapCardHolder.svelte";
-  import { Style, Circle as CircleStyle, Fill, Stroke } from "ol/style";
+  import { Style, Fill, Stroke } from "ol/style";
   import gardens from "../../assets/gardens.json";
   import { currentMapState } from "../state.svelte";
   import { fromLonLat } from "ol/proj";
@@ -25,82 +24,78 @@
 
   let mapElement;
   let map;
+  let iconPath;
+
+  // style options
+
+  function setBgOptions(color) {
+    return new RegularShape({
+      points: 4,
+      radius: 30,
+      angle: Math.PI / 4,
+      fill: new Fill({ color: color }),
+      displacement: [0, 15],
+    });
+  }
+
+  function setIconOptions(path, color) {
+    return new Icon({
+      src: path,
+      anchor: [0.5, 0.9],
+      height: 40,
+      width: 40,
+      color: color,
+    });
+  }
+
+  function setTextOptions(f, fill, stroke, bgFill, bgStroke) {
+    return new Text({
+      text: f.get("garden"),
+      font: "bold 14px system-ui, Avenir, Helvetica, Arial, sans-serif",
+      fill: new Fill({ color: fill }),
+      stroke: new Stroke({ color: stroke, width: 6 }),
+      offsetY: 30,
+      offsetX: 0,
+      placement: "point",
+      backgroundFill: new Fill({ color: bgFill }),
+      backgroundStroke: new Stroke({ color: bgStroke, width: 4 }),
+      padding: [4, 8, 4, 8],
+    });
+  }
+
+  // normal and hovered style functions
 
   const normalStyle = (feature) => {
-    const color = "#E5E7EBF";
     const iconName = feature.get("icon");
-    const iconPath = `icons/${iconName}`;
-    const yOffsetFraction = 0.6; // 0.5 = center, 0.6 = slightly up
+    iconPath = `icons/${iconName}`;
 
     return [
       new Style({
-        image: new RegularShape({
-          points: 4,
-          radius: 40,
-          angle: Math.PI / 4,
-          fill: new Fill({ color: "#ffffff" }),
-          displacement: [0, 25],
-        }),
+        image: setBgOptions("#DEFCE2")
       }),
       new Style({
-        image: new Icon({
-          src: iconPath,
-          anchor: [0.5, 1],
-          height: 50,
-          width: 50,
-        }),
-        text: new Text({
-          text: feature.get("garden"),
-          font: "bold 14px system-ui, Avenir, Helvetica, Arial, sans-serif",
-          fill: new Fill({ color: "#000" }),
-          stroke: new Stroke({ color: "#fff", width: 6 }),
-          offsetY: 30,
-          offsetX: 0,
-          placement: "point",
-          backgroundFill: new Fill({ color: "#fff" }),
-          backgroundStroke: new Stroke({ color: "#E5E7EB", width: 4 }),
-          padding: [4, 8, 4, 8],
-        }),
+        image: setIconOptions(iconPath, "#DEFCE2"),
+        text: setTextOptions(feature, "#000", "#F3F4F6", "#F3F4F6", "#E5E7EB"),
       }),
     ];
   };
 
   const hoverStyle = (feature) => {
-    const color = "#E5E7EBF";
     const iconName = feature.get("icon");
-    const iconPath = `icons/${iconName}`;
+    iconPath = `icons/${iconName}`;
+
     return [
       new Style({
-        image: new RegularShape({
-          points: 4,
-          radius: 40,
-          angle: Math.PI / 4,
-          fill: new Fill({ color: "#ffffff" }),
-          displacement: [0, 25],
-        }),
+        image: setBgOptions("#FBDEF8"),
       }),
       new Style({
-        image: new Icon({
-          src: iconPath,
-          anchor: [0.5, 1],
-          height: 50,
-          width: 50,
-        }),
-        text: new Text({
-          text: feature.get("garden"),
-          font: "bold 14px system-ui, Avenir, Helvetica, Arial, sans-serif",
-          fill: new Fill({ color: "#000" }),
-          stroke: new Stroke({ color: "#F3F4F6", width: 6 }),
-          offsetY: 30,
-          offsetX: 0,
-          placement: "point",
-          backgroundFill: new Fill({ color: "#F3F4F6" }),
-          backgroundStroke: new Stroke({ color: "#E5E7EB", width: 4 }),
-          padding: [4, 8, 4, 8],
-        }),
+        image: setIconOptions(iconPath, "#FBDEF8"),
+        text: setTextOptions(feature, "#000", "#F3F4F6", "#F3F4F6", "#E5E7EB"),
       }),
     ];
   };
+
+  // define layers
 
   let pathSource = new VectorSource();
   let pathLayer = new VectorLayer({
@@ -108,7 +103,6 @@
     style: normalStyle,
   });
 
-  //   let backgroundLayer = new LayerGroup();
   let foregroundLayer = new LayerGroup({ layers: [pathLayer] });
   const baseLayer = new TileLayer({
     source: new OSM(),
@@ -118,6 +112,8 @@
     center: fromLonLat([-71.1, 42.315]),
     zoom: 15,
   });
+
+  // handle view based on index
 
   $effect(() => {
     const garden = gardens[currentMapState.currentIndex];
@@ -138,6 +134,8 @@
         });
       });
   });
+
+  // onMount
 
   onMount(() => {
     map = new Map({
@@ -161,15 +159,12 @@
         }
 
         const clicked = feature.get("garden");
-
         const index = gardens.findIndex((garden) => garden.garden === clicked);
-
-        console.log(`clickedname: ${clicked}`);
-        console.log(`index: ${index}`);
 
         if (index !== -1) {
           currentMapState.currentIndex = index;
         }
+
       });
     });
 
@@ -191,8 +186,8 @@
         return true;
       });
     });
-
   });
+
 </script>
 
 <div class="fixed inset-0 flex flex-col overflow-hidden">
