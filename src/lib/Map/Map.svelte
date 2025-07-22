@@ -13,7 +13,7 @@
   import "ol/ol.css";
   import MapCardHolder from "./MapCardHolder.svelte";
   import { Style, Fill, Stroke } from "ol/style";
-  import gardens from "../../assets/gardens.json";
+  import gardens from "../../assets/gardens_20250722.json";
   import { currentMapState } from "../state.svelte";
   import { fromLonLat } from "ol/proj";
   import Text from "ol/style/Text.js";
@@ -68,6 +68,7 @@
   const normalStyle = (feature) => {
     const iconName = feature.get("icon");
     iconPath = `icons/${iconName}`;
+    console.log(iconPath)
 
     return [
       new Style({

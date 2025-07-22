@@ -1,7 +1,7 @@
 <script>
   import MapCard from "./MapCard.svelte";
 
-  import gardens from "../../assets/gardens.json";
+  import gardens from "../../assets/gardens_20250722.json";
 
   import { currentMapState } from "../state.svelte";
 
