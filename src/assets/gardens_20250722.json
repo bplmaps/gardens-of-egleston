@@ -14,7 +14,7 @@
     "photos": "https://gardensofegleston.org/explore-the-gardens/peace-garden-2/",
     "archivaldocs": "https://www.facebook.com/photo/?fbid=10225093618835197&set=gm.1307370106423548&idorvanity=205069536653616",
     "transcripts": "URL",
-    "thumbnail": "../../src/assets/thumbnails/peace.jpg",
+    "thumbnail": "thumbs/peace.jpg",
     "photo_credit": "Andrea Patiño Contreras",
     "alt_text": "A park space  with daffodils at the corner of Washington and School Streets in Egleston Sq. There are children running and adults talking near some trees. There is a handpainted sign that says \"Siguenos..Follow us @eglestonsquarepeacegarden\" that also has a group of faces."
   },
@@ -33,7 +33,7 @@
     "photos": "https://gardensofegleston.org/explore-the-gardens/nubias-gardens/",
     "archivaldocs": "",
     "transcripts": "",
-    "thumbnail": "../../src/assets/thumbnails/dixwell.jpg",
+    "thumbnail": "thumbs/dixwell.jpg",
     "photo_credit": "Andrea Patiño Contreras",
     "alt_text": "Two men, one older and one younger, are holding a tray of pepper seedlings in a garden standing on landscape fabric that has pepper seedlings evenly planted in rows. There is a light blue small house behind them."
   },
@@ -52,7 +52,7 @@
     "photos": "https://gardensofegleston.org/explore-the-gardens/nubias-gardens/",
     "archivaldocs": "",
     "transcripts": "",
-    "thumbnail": "../../src/assets/thumbnails/dimock.jpg",
+    "thumbnail": "thumbs/dimock.jpg",
     "photo_credit": "Cora Roelofs",
     "alt_text": "An older man waters newly planted seedlings with a hose in a fenced garden with a large tree behind him."
   },
@@ -71,7 +71,7 @@
     "photos": "https://gardensofegleston.org/explore-the-gardens/friends-of-egleston-square-library-food-forest-and-gardens/",
     "archivaldocs": "",
     "transcripts": "",
-    "thumbnail": "../../src/assets/thumbnails/friends.webp",
+    "thumbnail": "thumbs/friends.webp",
     "photo_credit": "Cora Roelofs",
     "alt_text": "Sunflower against a sunset with an apartment building behind it."
   },
@@ -90,7 +90,7 @@
     "photos": "https://gardensofegleston.org/explore-the-gardens/chilcott-granada-community-garden/",
     "archivaldocs": "",
     "transcripts": "",
-    "thumbnail": "../../src/assets/thumbnails/chilcott.jpg",
+    "thumbnail": "thumbs/chilcott.jpg",
     "photo_credit": "Andrea Patiño Contreras",
     "alt_text": "A woman wearing a garland of paper roses is dancing in front of a flowering tree. The flowers are white."
   },
@@ -109,7 +109,7 @@
     "photos": "https://gardensofegleston.org/explore-the-gardens/egleston-community-orchard/",
     "archivaldocs": "",
     "transcripts": "",
-    "thumbnail": "../../src/assets/thumbnails/orchard.jpg",
+    "thumbnail": "thumbs/orchard.jpg",
     "photo_credit": "Andrea Patiño Contreras",
     "alt_text": "A woman wearing a green shirt is painting a sign that says Raspberries. In her hand is a paper plate with different color paints."
   },
@@ -128,7 +128,7 @@
     "photos": "https://gardensofegleston.org/explore-the-gardens/hernandez-school-rain-garden/",
     "archivaldocs": "https://storymaps.arcgis.com/stories/f49c01fbc5bb4bdc8a5e3180b1d3e93e",
     "transcripts": "",
-    "thumbnail": "../../src/assets/thumbnails/hernandez.png",
+    "thumbnail": "thumbs/hernandez.png",
     "photo_credit": "Carolyn Lewenberg",
     "alt_text": "A garden with a wooden fence that has an opening and behind it are plants. On the fence is a raindrop sign that describes the rain garden."
   },
@@ -147,7 +147,7 @@
     "photos": "https://gardensofegleston.org/explore-the-gardens/robert-g-lawson-park/",
     "archivaldocs": "https://www.boston.gov/sites/default/files/file/2025/01/2025-01-27_BPRD%20Lawson%20public%20meeting%202-Presentation.pdf",
     "transcripts": "",
-    "thumbnail": "../../src/assets/thumbnails/lawson.png",
+    "thumbnail": "thumbs/lawson.png",
     "photo_credit": "Egleston Sq Main Street",
     "alt_text": "A park space with a woman reading into a microphone from an open book in front of an audience that is seated."
   },
@@ -166,7 +166,7 @@
     "photos": "https://gardensofegleston.org/explore-the-gardens/franklin-park-guerrilla-garden/",
     "archivaldocs": "",
     "transcripts": "",
-    "thumbnail": "../../src/assets/thumbnails/franklin.jpg",
+    "thumbnail": "thumbs/franklin.jpg",
     "photo_credit": "Kevin Batt",
     "alt_text": "Red and white leaves on plants climbing over large stones at the entrance to Franklin Park"
   },
@@ -185,7 +185,7 @@
     "photos": "https://gardensofegleston.org/explore-the-gardens/golden-staircase-park-lane/",
     "archivaldocs": "",
     "transcripts": "",
-    "thumbnail": "../../src/assets/thumbnails/stairs.jpg",
+    "thumbnail": "thumbs/stairs.jpg",
     "photo_credit": "Andrea Patiño Contreras",
     "alt_text": "A rock garden with green plants and yellow flowers in front of a chain link fence"
   },
@@ -204,7 +204,7 @@
     "photos": "",
     "archivaldocs": "",
     "transcripts": "",
-    "thumbnail": "../../src/assets/thumbnails/mendell.jpg",
+    "thumbnail": "thumbs/mendell.jpg",
     "photo_credit": "Boston Schoolyard Initiative",
     "alt_text": "A school yard with small raised beds and a stone path and wooden posts"
   },
@@ -223,7 +223,7 @@
     "photos": "https://gardensofegleston.org/explore-the-gardens/jeffreys-garden/",
     "archivaldocs": "",
     "transcripts": "",
-    "thumbnail": "../../src/assets/thumbnails/jeffry.jpg",
+    "thumbnail": "thumbs/jeffry.jpg",
     "photo_credit": "Andrea Patiño Contreras",
     "alt_text": "A man with sunglasses holds out his fist full of garden soil near a green plant and a support structure"
   },
@@ -242,7 +242,7 @@
     "photos": "https://gardensofegleston.org/explore-the-gardens/doris-garden/",
     "archivaldocs": "",
     "transcripts": "",
-    "thumbnail": "../../src/assets/thumbnails/doris.jpg",
+    "thumbnail": "thumbs/doris.jpg",
     "photo_credit": "Andrea Patiño Contreras",
     "alt_text": "An open hand holds a pink flower bud near daisies"
   },
@@ -261,7 +261,7 @@
     "photos": "https://gardensofegleston.org/explore-the-gardens/dimock-pre-school-garden/",
     "archivaldocs": "",
     "transcripts": "",
-    "thumbnail": "../../src/assets/thumbnails/dimock-pre.jpg",
+    "thumbnail": "thumbs/dimock-pre.jpg",
     "photo_credit": "Cora Roelofs",
     "alt_text": "Raised beds with seedlings and a blue, yellow and red sculpture on a fence."
   }
