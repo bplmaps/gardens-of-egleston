@@ -215,12 +215,7 @@
       <p
         class="italic items-center justify-left gap-2 text-sm text-gray-500 mt-4"
       >
-        Photo caption with a <a
-          target="blank"
-          href={garden.photos}
-          class="text-blue-900 underline hover:text-blue-600 transition-colors"
-          >link to a source</a
-        >
+        Photo credit {garden.photo_credit}
       </p>
     </div>
   </div>

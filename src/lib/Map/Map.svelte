@@ -118,7 +118,7 @@
 
   $effect(() => {
     const garden = gardens[currentMapState.currentIndex];
-    fetch(`/gardens.geojson`)
+    fetch("gardens.geojson")
       .then((response) => response.json())
       .then((geojson) => {
         let p = Math.min(window.innerWidth, window.innerHeight);
