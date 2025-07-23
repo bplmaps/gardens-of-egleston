@@ -32,7 +32,7 @@
             Use this map to view neighborhood gardens in Boston's Egleston Square.
             You can:
           </p>
-          <ul class="text-left space-y-2 text-sm italic">
+          <ul class="space-y-2 text-sm italic">
             <li class="flex items-center">
               <span class="bg-gray-200 rounded-lg text-xs mr-2 p-2">
                 {@html videos}

@@ -170,7 +170,7 @@
             class="bg-gray-200 rounded-lg text-xs mr-2 p-2 max-h-8 w-8 lg:w-24 flex hover:bg-gray-300"
           >
             {@html archives}
-            <p class="mx-1 hidden lg:block">Archives</p>
+            <p class="mx-1 hidden lg:block">Read</p>
           </a>
         {/if}
 
@@ -215,7 +215,7 @@
       <p
         class="italic items-center justify-left gap-2 text-sm text-gray-500 mt-4"
       >
-        Photo credit {garden.photo_credit}
+        Photo credit: {garden.photo_credit}
       </p>
     </div>
   </div>
